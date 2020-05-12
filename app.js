@@ -81,14 +81,7 @@ MongoClient.connect(config.db.host, { useUnifiedTopology: true }, (err, dbHandle
     app.post(`/${config.entity}`, (req, res) => {
 
         let ent = req.body;
-        //validation for sent data
-        // if (contact.name === undefined) {
-        //     res.send({
-        //         success: false,
-        //         err: 'Contact name is missing'
-        //     });
-        // }
-        // else 
+        console.log("add user: ", ent)
 
         {
             db.collection(config.entity).insertOne(ent, (err, result) => {
@@ -153,8 +146,8 @@ MongoClient.connect(config.db.host, { useUnifiedTopology: true }, (err, dbHandle
     })
 
     //delete one
-    app.delete(`/${config.entity}`, (req, res) => {
-        let ent = req.body.ent;
+    app.post(`/${config.entity}/delete`, (req, res) => {
+        let ent = req.body;
         /**
          * validation
          */
